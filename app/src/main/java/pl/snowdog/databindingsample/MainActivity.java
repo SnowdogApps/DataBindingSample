@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import pl.snowdog.databindingsample.dao.MockDao;
 import pl.snowdog.databindingsample.databinding.ActivityMainBinding;
@@ -16,9 +17,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        final ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         Quote quote = MockDao.getRandomQuote();
         binding.setQuote(quote);
+
+        binding.nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Quote quote = MockDao.getRandomQuote();
+                binding.setQuote(quote);
+            }
+        });
     }
 
     @Override
