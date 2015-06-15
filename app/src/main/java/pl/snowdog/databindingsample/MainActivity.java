@@ -18,7 +18,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         final ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        Quote quote = MockDao.getRandomQuote();
+        Quote quote;
+
+        if (getIntent().hasExtra("index")) {
+            quote = MockDao.quotes.get(getIntent().getIntExtra("index", 0));
+        } else {
+            quote = MockDao.getRandomQuote();
+        }
+
         binding.setQuote(quote);
 
         binding.nextButton.setOnClickListener(new View.OnClickListener() {

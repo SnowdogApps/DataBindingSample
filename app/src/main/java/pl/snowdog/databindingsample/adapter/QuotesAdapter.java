@@ -2,11 +2,14 @@ package pl.snowdog.databindingsample.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import de.greenrobot.event.EventBus;
 import pl.snowdog.databindingsample.databinding.ItemQuoteBinding;
+import pl.snowdog.databindingsample.event.ItemClickEvent;
 import pl.snowdog.databindingsample.model.Quote;
 
 /**
@@ -14,17 +17,23 @@ import pl.snowdog.databindingsample.model.Quote;
  */
 public class QuotesAdapter extends RecyclerView.Adapter<QuotesAdapter.ViewHolder> {
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private ItemQuoteBinding binding;
 
         public ViewHolder(ItemQuoteBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
+            binding.getRoot().setOnClickListener(this);
         }
 
         public ItemQuoteBinding getBinding() {
             return binding;
+        }
+
+        @Override
+        public void onClick(View v) {
+            EventBus.getDefault().post(new ItemClickEvent(getAdapterPosition()));
         }
     }
 
