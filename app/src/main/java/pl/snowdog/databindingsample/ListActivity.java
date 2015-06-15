@@ -3,9 +3,12 @@ package pl.snowdog.databindingsample;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import pl.snowdog.databindingsample.adapter.QuotesAdapter;
 import pl.snowdog.databindingsample.dao.MockDao;
 import pl.snowdog.databindingsample.databinding.ActivityListBinding;
 
@@ -16,6 +19,9 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityListBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_list);
         binding.setTotal(MockDao.getTotal());
+        QuotesAdapter adapter = new QuotesAdapter(MockDao.quotes);
+        binding.recyclerView.setAdapter(adapter);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override

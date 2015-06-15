@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+     >
+
+    <data>
+        <variable name="quote" type="pl.snowdog.databindingsample.model.Quote"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            style="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:lines="1"
+            android:ellipsize="marquee"
+            android:text="@{quote.text}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="@{quote.author}"/>
+    </LinearLayout>
+</layout>
