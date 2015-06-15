@@ -1,6 +1,9 @@
 <resources>
-    <string name="app_name">DataBindingSample</string>
+    <string name="app_name">Data Binding Sample</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_list">List of quotes</string>
+
+    <string name="quotes_no">%d famous quotes of IT</string>
 </resources>

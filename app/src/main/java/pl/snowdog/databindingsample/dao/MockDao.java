@@ -31,4 +31,8 @@ public class MockDao {
         Quote quote = quotes.get(rand.nextInt(quotes.size()));
         return quote;
     }
+
+    public static int getTotal() {
+        return quotes.size();
+    }
 }
