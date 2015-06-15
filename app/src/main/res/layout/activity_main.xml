@@ -3,6 +3,7 @@
      >
 
     <data>
+        <import type="pl.snowdog.databindingsample.util.StringUtils"/>
         <variable name="quote" type="pl.snowdog.databindingsample.model.Quote"/>
     </data>
 
@@ -24,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/quoteText"
             android:layout_alignParentRight="true"
-            android:text="@{quote.author}"/>
+            android:text="@{StringUtils.capitalize(quote.author)}"/>
 
         <ImageButton
             android:id="@+id/nextButton"
